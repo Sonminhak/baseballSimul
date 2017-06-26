@@ -1,23 +1,18 @@
 
 public class ScoreSave {
 
-	public void homeawaychange(){ //home away change
-		
-	}
-
-	public void inningcheck(){ // check inning
-		
+	public int hometeamScore, awayteamScore;
+	
+	public ScoreSave() {
+		this.hometeamScore = 0;
+		this.awayteamScore = 0;
 	}
 	
-	public void homescorecheck(){ // save hometeamscore
-		
-	}
-
-	public void awayscorecheck(){ // save awayteamscore
-		
+	public ScoreSave(int hometeamScore, int awayteamScore){
+		this.hometeamScore = hometeamScore;
+		this.awayteamScore = awayteamScore;
 	}
 	
-
 	
 	
 }

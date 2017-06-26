@@ -7,7 +7,7 @@ public class Main {
 		Menu m = new Menu();
 		m.editor();
 		
-		char teamA, teamB; // ∆¿¿Ã∏ß
+		char teamA, teamB; //∆¿¿Ã∏ß
 		int [][] inning = new int[2][12];
 		int outcount = 0;
 		
