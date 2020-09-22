@@ -12,7 +12,7 @@ public class Simulator
 	private String team1;	// 선공팀
 	private String team2;	// 후공팀
 
-	private ScoreBoard scoreBoard;	// 점수판
+	private ScoreSave scoreBoard;	// 점수판
 	
 	/* 상태를 나타내는 변수 */
 	private int inning;		// 이닝
@@ -38,7 +38,7 @@ public class Simulator
 	/* 게임 초기화 */
 	public void initGame()
 	{
-		scoreBoard = new ScoreBoard(team1, team2);
+		scoreBoard = new ScoreSave(team1, team2);
 		/* 상태 변수들 초기화 */
 		outCount = 0;
 		inning = 1;
@@ -78,9 +78,9 @@ public class Simulator
 						
 					}
 					playball = true;
-					/*System.out.print("진행하시려면 <Enter>키를 누르십시오.");
+					System.out.print("진행하시려면 <Enter>키를 누르십시오.");
 					BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-					in.readLine();*/
+					in.readLine();
 					progress();
 					
 				}

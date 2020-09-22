@@ -2,7 +2,7 @@
 클래스이름 : ScoreBoard
 역할 : 이닝당 게임 스코어 기록, H/R/E 기록
 */
-public class ScoreBoard 
+public class ScoreSave 
 {
 	/*=========== 변  수 ============*/
 	private String [] teamName = new String[2];		// 팀이름
@@ -55,14 +55,14 @@ public class ScoreBoard
 
 	/* */
 	/*=========== 생성자 ============*/
-	public ScoreBoard()
+	public ScoreSave()
 	{
 		initScoreBoard();
 
 		//-- 테스트용 코드
 	//	testCase();
 	}
-	public ScoreBoard(String teamname1, String teamname2)
+	public ScoreSave(String teamname1, String teamname2)
 	{
 		initScoreBoard();
 		teamName[0] = teamname1;
@@ -90,8 +90,4 @@ public class ScoreBoard
 		recordRun[1] = 0;
 	}
 
-	public void helloMessage()
-	{
-		System.out.println("Hello, " + this.getClass().getName() + "!");
-	}
 }

@@ -1,12 +1,12 @@
 import java.io.IOException;
 
-public class SimpleBaseBallSimulation
+public class BaseBallSimul
 {
 	public static void main(String [] args)
 	{
 		StatData gets = new StatData();
 		gets.getStat();
-		SimpleBaseBallSimulation app = new SimpleBaseBallSimulation();
+		BaseBallSimul app = new BaseBallSimul();
 		app.gameManTest();
 	}
 	
@@ -25,8 +25,4 @@ public class SimpleBaseBallSimulation
 		gm.viewCurrentScoreBoard();
 	}
 
-	public void helloMessage()
-	{
-		System.out.println("Hello, " + this.getClass().getName() + "!");
-	}
 }

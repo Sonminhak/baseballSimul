@@ -5,7 +5,7 @@ public class ScoreBoardView
 	/*=========== 持失切 ============*/
 	/*=========== 五社球 ============*/
 
-	public void display(ScoreBoard sb)
+	public void display(ScoreSave sb)
 	{
 		System.out.println("[SCORE BOARD]");
 		System.out.println("===========================================");
