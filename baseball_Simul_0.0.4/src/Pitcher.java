@@ -1,20 +1,18 @@
 
 public class Pitcher extends PlayerData {
 	private int order;
-	
-
-	private int win, lose, strike, ball;
-	private float era;
+	private int win, strike, ball;
+	private float whip, era;
 
 	public Pitcher() {
 		
 	}
-	public Pitcher(String team, String position, int order, String name, int number,int win, int lose, float era, int strike, int ball){
+	public Pitcher(String team, String position, int order, String name, int number,int win, float era, float whip, int strike, int ball){
 		super(name,team,position,number);
 		this.order = order;
 		this.win = win;
-		this.lose = lose;
 		this.era = era;
+		this.whip = whip;
 		this.strike = strike;
 		this.ball = ball;
 	}
@@ -35,12 +33,12 @@ public class Pitcher extends PlayerData {
 		this.win = win;
 	}
 	
-	public int getLose() {
-		return lose;
+	public float getWhip() {
+		return whip;
 	}
 	
-	public void setLose(int lose) {
-		this.lose = lose;
+	public void setWhip(int whip ) {
+		this.whip = whip;
 	}
 	
 	public int getStrike() {

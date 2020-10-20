@@ -1,10 +1,5 @@
 public class ScoreBoardView 
 {
-	/*=========== 변  수 ============*/
-	/* */
-	/*=========== 생성자 ============*/
-	/*=========== 메소드 ============*/
-
 	public void display(ScoreSave sb)
 	{
 		System.out.println("[SCORE BOARD]");
@@ -24,8 +19,5 @@ public class ScoreBoardView
 		}
 		System.out.println("===========================================");
 	}
-	public void helloMessage()
-	{
-		System.out.println("Hello, " + this.getClass().getName() + "!");
-	}
+
 }

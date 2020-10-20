@@ -1,17 +1,13 @@
-/*
-클래스이름 : ScoreBoard
-역할 : 이닝당 게임 스코어 기록, H/R/E 기록
-*/
 public class ScoreSave 
 {
-	/*=========== 변  수 ============*/
+
 	private String [] teamName = new String[2];		// 팀이름
 	private int [][] recordInning = new int[10][2];	// 9회까지 점수
 	private int [] recordHit = new int[2];			// 안타
 	private int [] recordError = new int[2];		// 에러
 	private int [] recordRun = new int[2];			// 점수
 
-	/*======= get/set 메서드 =======*/
+
 	public String [] getTeamName() { return teamName; }
 	public int [][] getInning() { return recordInning; }
 	public int [] getHit() { return recordHit; }
@@ -53,15 +49,6 @@ public class ScoreSave
 		recordError[value]++;
 	}
 
-	/* */
-	/*=========== 생성자 ============*/
-	public ScoreSave()
-	{
-		initScoreBoard();
-
-		//-- 테스트용 코드
-	//	testCase();
-	}
 	public ScoreSave(String teamname1, String teamname2)
 	{
 		initScoreBoard();

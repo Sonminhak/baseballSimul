@@ -2,20 +2,22 @@ public class Batter extends PlayerData {
 	// 타자 정보 저장
 	
 	private int order;
-	private int hit, homerun, rbi;
+	private int hit, homerun, fourball;
 	private float hitrate;
+	private float ops;
 	// 저장한 타자 정보
 
 	public Batter(){
 		
 	}
 	
-	public Batter(String team, String position, int order, String name, int number, int hit, int homerun, int rbi, float hitrate){
+	public Batter(String team, String position, int order, String name, int number, int hit, float ops, int homerun, int fourball, float hitrate){
 		super(name,team,position,number);
 		this.order = order;
 		this.hit = hit;
+		this.ops = ops;
 		this.homerun = homerun;
-		this.rbi = rbi;
+		this.fourball = fourball;
 		this.hitrate = hitrate;
 	}
 	
@@ -49,13 +51,13 @@ public class Batter extends PlayerData {
 	}
 
 
-	public int getRbi() {
-		return rbi;
+	public int getfourball() {
+		return fourball;
 	}
 
 
-	public void setRbi(int rbi) {
-		this.rbi = rbi;
+	public void setfourball(int fourball) {
+		this.fourball = fourball;
 	}
 
 
@@ -68,4 +70,12 @@ public class Batter extends PlayerData {
 		this.hitrate = hitrate;
 	}
 
+	public float getOps() {
+		return ops;
+	}
+
+
+	public void setOps(float Ops) {
+		this.ops = ops;
+	}
 }

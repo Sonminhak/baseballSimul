@@ -1,10 +1,6 @@
 import java.io.*;
 import java.util.Arrays;
 
-/*
-클래스이름 : GameMan
-역할 : 게임초기화, 선공후공선택, 상태변수를 갖고있음, 게임운영
-*/
 public class Simulator 
 {
 	/*=========== 변  수 ============*/
@@ -83,6 +79,13 @@ public class Simulator
 					in.readLine();
 					progress();
 					
+				}
+				if(inning%3==0) {
+					if(firstTeamAttack) {
+						BteamPitcherOrder++;
+					}else {
+						AteamPitcherOrder++;
+					}
 				}
 				//-- 공수교대 메시지 출력
 				System.out.println(whatInning() + whoAttack() + "공격이 끝났습니다. 공수교대!");
@@ -200,18 +203,23 @@ public class Simulator
 			moveRunner(1,!firstTeamAttack);
 		}
 		
-		AteamBatterOrder++;
-		BteamBatterOrder++;
-		if(AteamBatterOrder>=9||BteamBatterOrder>=9) {
-			AteamBatterOrder = 0;
-			BteamBatterOrder = 0;
-			
-		}
 		
-		if(inning%3==0) {
-			AteamPitcherOrder++;
-			BteamPitcherOrder++;
+		
+		if(firstTeamAttack) {
+			AteamBatterOrder++;
+			if(AteamBatterOrder>=9) {
+				AteamBatterOrder = 0;
+			}
+	
+			
+		}else {
+			BteamBatterOrder++;
+			if(BteamBatterOrder>=9) {
+				BteamBatterOrder = 0;
+			}
+
 		}
+	
 	}
 	
 	/* 0 - 1루, 1 - 2루 , 2 - 3루 */ 

@@ -17,11 +17,12 @@ public class StatData{
 	String position;
 	int number;
 	int win;
-	int lose; 
+	float whip; 
 	float era; 
+	float ops;
 	int strike; 
 	int ball;
-	int hit, homerun, rbi;
+	int hit, homerun, fourball;
 	float hitrate;
 	
 	
@@ -32,15 +33,12 @@ public class StatData{
 	
 	public void getStat() {
 		
-			
-		System.out.println("동작 확인");
 		
-		String path = "C:\\Users\\boy16\\Desktop\\민학\\baseballSimul\\baseball_Simul_0.03\\src\\playerdata.xlsx";
+		String path = "C:\\Users\\boy16\\git\\baseballSimul\\baseball_Simul_0.0.4\\src\\playerdata.xlsx";
 		
 		try {
 			File file = new File(path);
 			FileInputStream inputStream = new FileInputStream(file);
-			System.out.println("동작 확인2");
 			XSSFWorkbook hworkbook = new XSSFWorkbook(inputStream);
 			
 			XSSFSheet curSheet;
@@ -59,11 +57,9 @@ public class StatData{
 				for(int rowIndex = 0; rowIndex<row;rowIndex++) {
 					
 					curRow = curSheet.getRow(rowIndex);
-					System.out.println("동작 확인3");
 					
 					
 					if(String.valueOf(curRow.getCell(0)).equals("A")) {
-						System.out.println("동작 확인4");
 						if(String.valueOf(curRow.getCell(1)).equals("P")) {
 							
 							// for(int cellIndex = 0;cellIndex<curRow.getPhysicalNumberOfCells();cellIndex++) {	}				
@@ -73,12 +69,12 @@ public class StatData{
 								name = String.valueOf(curRow.getCell(3));
 								number = (Double.valueOf(String.valueOf(curRow.getCell(4)))).intValue();
 								win = (Double.valueOf(String.valueOf(curRow.getCell(5)))).intValue();
-								lose = (Double.valueOf(String.valueOf(curRow.getCell(6)))).intValue();
-								era = Float.valueOf(String.valueOf(curRow.getCell(7)));
+								era = Float.valueOf(String.valueOf(curRow.getCell(6)));
+								whip = Float.valueOf(String.valueOf(curRow.getCell(7)));
 								strike = (Double.valueOf(String.valueOf(curRow.getCell(8)))).intValue();
 								ball = (Double.valueOf(String.valueOf(curRow.getCell(9)))).intValue();
 								
-								pitcherlistA.add(new Pitcher(team,position,order,name,number,win,lose,era,strike,ball));	
+								pitcherlistA.add(new Pitcher(team,position,order,name,number,win,era,whip,strike,ball));	
 							
 								System.out.println(pitcherlistA.get(0).getName());
 								System.out.println(pitcherlistA.size());
@@ -90,11 +86,12 @@ public class StatData{
 								name = String.valueOf(curRow.getCell(3));
 								number = (Double.valueOf(String.valueOf(curRow.getCell(4)))).intValue();
 								hit = (Double.valueOf(String.valueOf(curRow.getCell(5)))).intValue();
-								homerun = (Double.valueOf(String.valueOf(curRow.getCell(6)))).intValue();
-								rbi = (Double.valueOf(String.valueOf(curRow.getCell(7)))).intValue();
-								hitrate = Float.valueOf(String.valueOf(curRow.getCell(8)));
+								ops = Float.valueOf(String.valueOf(curRow.getCell(6)));
+								homerun = (Double.valueOf(String.valueOf(curRow.getCell(7)))).intValue();
+								fourball = (Double.valueOf(String.valueOf(curRow.getCell(8)))).intValue();
+								hitrate = Float.valueOf(String.valueOf(curRow.getCell(9)));
 								
-								batterlistA.add(new Batter(team,position,order,name,number,hit,homerun,rbi,hitrate));
+								batterlistA.add(new Batter(team,position,order,name,number,hit,ops,homerun,fourball,hitrate));
 								
 						}
 						
@@ -108,12 +105,12 @@ public class StatData{
 								name = String.valueOf(curRow.getCell(3));
 								number = (Double.valueOf(String.valueOf(curRow.getCell(4)))).intValue();
 								win = (Double.valueOf(String.valueOf(curRow.getCell(5)))).intValue();
-								lose = (Double.valueOf(String.valueOf(curRow.getCell(6)))).intValue();
-								era = Float.valueOf(String.valueOf(curRow.getCell(7)));
+								era = Float.valueOf(String.valueOf(curRow.getCell(6)));
+								whip = Float.valueOf(String.valueOf(curRow.getCell(7)));
 								strike = (Double.valueOf(String.valueOf(curRow.getCell(8)))).intValue();
 								ball = (Double.valueOf(String.valueOf(curRow.getCell(9)))).intValue();
 								
-								pitcherlistB.add(new Pitcher(team,position,order,name,number,win,lose,era,strike,ball));	
+								pitcherlistB.add(new Pitcher(team,position,order,name,number,win,era,whip,strike,ball));	
 								
 						}else {
 								team = String.valueOf(curRow.getCell(0));
@@ -122,11 +119,12 @@ public class StatData{
 								name = String.valueOf(curRow.getCell(3));
 								number = (Double.valueOf(String.valueOf(curRow.getCell(4)))).intValue();
 								hit = (Double.valueOf(String.valueOf(curRow.getCell(5)))).intValue();
-								homerun = (Double.valueOf(String.valueOf(curRow.getCell(6)))).intValue();
-								rbi = (Double.valueOf(String.valueOf(curRow.getCell(7)))).intValue();
-								hitrate = Float.valueOf(String.valueOf(curRow.getCell(8)));
+								ops = Float.valueOf(String.valueOf(curRow.getCell(6)));
+								homerun = (Double.valueOf(String.valueOf(curRow.getCell(7)))).intValue();
+								fourball = (Double.valueOf(String.valueOf(curRow.getCell(8)))).intValue();
+								hitrate = Float.valueOf(String.valueOf(curRow.getCell(9)));
 								
-								batterlistB.add(new Batter(team,position,order,name,number,hit,homerun,rbi,hitrate));
+								batterlistB.add(new Batter(team,position,order,name,number,hit,ops,homerun,fourball,hitrate));
 						}
 					
 					
@@ -144,13 +142,7 @@ public class StatData{
 				System.out.println("파일 불러오기 오류");
 				e.printStackTrace();
 			}
-		
-		System.out.println("동작 확인 5");
-		for(int index = 0;index<pitcherlistA.size();index++) {
-			System.out.println(pitcherlistA.get(index).toString());
-		}
-	
-	
+			
 	}
 	
 }

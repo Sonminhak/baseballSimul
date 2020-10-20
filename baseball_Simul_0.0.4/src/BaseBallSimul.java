@@ -20,7 +20,7 @@ public class BaseBallSimul
 		}
 		catch (IOException e)
 		{
-			System.out.println("³Ê¶§¹®¿¡ ÇÁ·Î±×·¥ »¶³µÀÝ¾Æ!" + e);
+			System.out.println(e);
 		}
 		gm.viewCurrentScoreBoard();
 	}
