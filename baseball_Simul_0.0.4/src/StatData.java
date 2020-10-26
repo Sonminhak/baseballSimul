@@ -76,8 +76,6 @@ public class StatData{
 								
 								pitcherlistA.add(new Pitcher(team,position,order,name,number,win,era,whip,strike,ball));	
 							
-								System.out.println(pitcherlistA.get(0).getName());
-								System.out.println(pitcherlistA.size());
 								
 						}else {
 								team = String.valueOf(curRow.getCell(0));

@@ -48,17 +48,17 @@ public class Simulator
 	/* 게임 시작 */
 	public void PLAYBALL() throws IOException
 	{
-		//-- PLAYBALL!!!
+
 		System.out.println("경기 시작되었습니다.");
 		boolean playball = false;
-		//-- 야구는 9회말 마지막 쓰리아웃을 잡기 전까진 모른다.
+
 		for ( ;inning<=9;inning++ )
 		{
 			for ( int i=0;i<2;i++ ) {
 				//-- 9회말에 후공팀이 앞선다면 경기종료
 				if ( inning==9 && i==1 && scoreBoard.getRun()[0] < scoreBoard.getRun()[1] )
 				{
-					System.out.print("후공팀이 앞서므로 9회말 공격없이 ");
+					System.out.print("후공팀 결과에 상관 없이 경기 종료");
 					break;
 				}
 				viewCurrentState();

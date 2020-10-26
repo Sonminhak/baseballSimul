@@ -22,25 +22,25 @@ public class GameAnalyser{
 		if(cTeam) {
 			//AÆÀ °ø°Ý vs BÆÀ ¼öºñ
 			
-			if(sdata.batterlistA.get(cBatter).getHitrate()>0.300) {
+			if(sdata.batterlistA.get(cBatter).getHitrate()>0.280) {
 				// Å¸À²
-				outPro = outPro*(float)0.7;
+				outPro = outPro*(float)0.9;
 			}else {
 				outPro = outPro+10;
 			}
 			
-			if(sdata.pitcherlistB.get(cPitcher).getEra()<3.00) {
+			if(sdata.pitcherlistB.get(cPitcher).getEra()<4.00) {
 				// Æò±ÕÀÚÃ¥Á¡ 
 				outPro = outPro*(float)1.5;
 			}
 			
-			if(sdata.batterlistA.get(cBatter).getHit()>130) {
-				outPro = outPro-10;
+			if(sdata.batterlistA.get(cBatter).getHit()>100) {
+				outPro = outPro-5;
 			}
-			if(sdata.pitcherlistB.get(cPitcher).getWhip()<1.5) {
+			if(sdata.pitcherlistB.get(cPitcher).getWhip()<1.3) {
 				outPro = outPro+5;
 			}else {
-				outPro = outPro*(float)0.7;
+				outPro = outPro*(float)0.9;
 			}
 			
 		
@@ -48,25 +48,25 @@ public class GameAnalyser{
 		}else {
 			//BÆÀ °ø°Ý vs AÆÀ ¼öºñ
 			
-			if(sdata.batterlistB.get(cBatter).getHitrate()>0.300) {
+			if(sdata.batterlistB.get(cBatter).getHitrate()>0.280) {
 				// Å¸À²
-				outPro = outPro*(float)0.7;
+				outPro = outPro*(float)0.9;
 			}else {
 				outPro = outPro+10;
 			}
 			
-			if(sdata.pitcherlistA.get(cPitcher).getEra()<3.00) {
+			if(sdata.pitcherlistA.get(cPitcher).getEra()<4.00) {
 				// Æò±ÕÀÚÃ¥Á¡ 
 				outPro = outPro*(float)1.5;
 			}
 			
-			if(sdata.batterlistB.get(cBatter).getHit()>130) {
-				outPro = outPro-10;
+			if(sdata.batterlistB.get(cBatter).getHit()>100) {
+				outPro = outPro-5;
 			}
-			if(sdata.pitcherlistA.get(cPitcher).getWhip()<1.5) {
+			if(sdata.pitcherlistA.get(cPitcher).getWhip()<1.3) {
 				outPro = outPro+5;
 			}else {
-				outPro = outPro*(float)0.7;
+				outPro = outPro*(float)0.9;
 			}
 			
 		}
@@ -81,9 +81,9 @@ public class GameAnalyser{
 		if(cTeam) {
 			//AÆÀ °ø°Ý vs BÆÀ ¼öºñ
 			
-			if(sdata.batterlistA.get(cBatter).getHitrate()>0.300) {
+			if(sdata.batterlistA.get(cBatter).getHitrate()>0.270) {
 				// Å¸À²
-				hitPro = hitPro+15;
+				hitPro = hitPro+5;
 			}else {
 				hitPro = hitPro*(float)0.9;
 			}
@@ -93,7 +93,7 @@ public class GameAnalyser{
 				hitPro = hitPro*(float)0.7;
 			}
 			
-			if(sdata.batterlistA.get(cBatter).getHit()>130) {
+			if(sdata.batterlistA.get(cBatter).getHit()>100) {
 				hitPro = hitPro*(float)1.2;
 			}
 			if(sdata.batterlistA.get(cBatter).getOps()>0.800) {
@@ -105,9 +105,9 @@ public class GameAnalyser{
 			
 		}else {
 			//BÆÀ °ø°Ý vs AÆÀ ¼öºñ
-			if(sdata.batterlistB.get(cBatter).getHitrate()>0.300) {
+			if(sdata.batterlistB.get(cBatter).getHitrate()>0.270) {
 				// Å¸À²
-				hitPro = hitPro+15;
+				hitPro = hitPro+5;
 			}else {
 				hitPro = hitPro*(float)0.9;
 			}
@@ -117,7 +117,7 @@ public class GameAnalyser{
 				hitPro = hitPro*(float)0.7;
 			}
 			
-			if(sdata.batterlistB.get(cBatter).getHit()>130) {
+			if(sdata.batterlistB.get(cBatter).getHit()>100) {
 				hitPro = hitPro*(float)1.2;
 			}
 			if(sdata.batterlistB.get(cBatter).getOps()>0.800) {
@@ -137,13 +137,13 @@ public class GameAnalyser{
 		
 		if(cTeam) {
 			//AÆÀ °ø°Ý vs BÆÀ ¼öºñ	
-			if(sdata.batterlistA.get(cBatter).getfourball()>80) {
+			if(sdata.batterlistA.get(cBatter).getfourball()>50) {
 				fBallPro = fBallPro+5;
 			}else {
 				fBallPro = fBallPro-5;
 			}
 				
-			if(sdata.pitcherlistB.get(cPitcher).getBall()>50) {
+			if(sdata.pitcherlistB.get(cPitcher).getBall()>30) {
 				fBallPro = fBallPro*(float)1.1;
 			}else {
 				fBallPro = fBallPro*(float)0.9;
@@ -153,13 +153,13 @@ public class GameAnalyser{
 		}else {
 			//BÆÀ °ø°Ý vs AÆÀ ¼öºñ
 			
-			if(sdata.batterlistB.get(cBatter).getfourball()>80) {
+			if(sdata.batterlistB.get(cBatter).getfourball()>50) {
 				fBallPro = fBallPro+10;
 			}else {
 				fBallPro = fBallPro-10;
 			}
 				
-			if(sdata.pitcherlistA.get(cPitcher).getBall()>50) {
+			if(sdata.pitcherlistA.get(cPitcher).getBall()>30) {
 				fBallPro = fBallPro*(float)1.1;
 			}else {
 				fBallPro = fBallPro*(float)0.9;
@@ -180,13 +180,19 @@ public class GameAnalyser{
 		if(cTeam) {
 			//AÆÀ °ø°Ý vs BÆÀ ¼öºñ
 			if(sdata.pitcherlistB.get(cPitcher).getStrike()>130) {
-				outevent = 3;
+				if(sdata.batterlistA.get(cBatter).getHitrate()>0.250) {
+					outevent = 3;
+					
+				}
 			}
 			
 		}else {
 			//BÆÀ °ø°Ý vs AÆÀ ¼öºñ
 			if(sdata.pitcherlistA.get(cPitcher).getStrike()>130) {
-				outevent = 3;
+				if(sdata.batterlistB.get(cBatter).getHitrate()>0.250) {
+					outevent = 3;
+					
+				}
 			}
 		}
 		

@@ -12,7 +12,7 @@ public class BaseBallSimul
 	
 	public void gameManTest()
 	{
-		Simulator gm = new Simulator("A","B");
+		Simulator gm = new Simulator("·Ôµ¥","SK");
 		gm.viewCurrentScoreBoard();
 		try
 		{
