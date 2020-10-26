@@ -20,16 +20,16 @@ public class GameAnalyser{
 	public float outPro(Boolean cTeam, int cBatter, int cPitcher) {
 		// 아웃 가능성 계산
 		float outPro;
-		outPro = (float)new Random().nextInt(70-60+1)+60;
+		outPro = (float)new Random().nextInt(80-50+1)+50;
 		
 		
 		if(cTeam) {
 			//A팀 공격 vs B팀 수비
 			
-			if(sdata.batterlistA.get(cBatter).getHitrate()>0.260) { // 타율
+			if(sdata.batterlistA.get(cBatter).getHitrate()>0.250) { // 타율
 				outPro = outPro*(float)0.9;
 			}else {
-				outPro = outPro+15;
+				outPro = outPro*(float)1.1;
 			}
 			
 			if(sdata.pitcherlistB.get(cPitcher).getEra()<4.00) { // 평균 자책점
@@ -37,11 +37,11 @@ public class GameAnalyser{
 			}
 			
 			if(sdata.batterlistA.get(cBatter).getHit()>100) { // 안타
-				outPro = outPro-5;
+				outPro = outPro-3;
 			}
 			
-			if(sdata.pitcherlistB.get(cPitcher).getWhip()<1.3) { // whip
-				outPro = outPro+5;
+			if(sdata.pitcherlistB.get(cPitcher).getWhip()<1.1) { // whip
+				outPro = outPro+10;
 			}else {
 				outPro = outPro*(float)0.9;
 			}
@@ -49,10 +49,10 @@ public class GameAnalyser{
 		}else {
 			//B팀 공격 vs A팀 수비
 			
-			if(sdata.batterlistB.get(cBatter).getHitrate()>0.260) {  // 타율
+			if(sdata.batterlistB.get(cBatter).getHitrate()>0.250) {  // 타율
 				outPro = outPro*(float)0.9;
 			}else {
-				outPro = outPro+15;
+				outPro = outPro*(float)1.1;
 			}
 			
 			if(sdata.pitcherlistA.get(cPitcher).getEra()<4.00) {  // 평균자책점 
@@ -60,16 +60,18 @@ public class GameAnalyser{
 			}
 			
 			if(sdata.batterlistB.get(cBatter).getHit()>100) { // 안타
-				outPro = outPro-5;
+				outPro = outPro-3;
 			}
 			
-			if(sdata.pitcherlistA.get(cPitcher).getWhip()<1.3) { // whip
-				outPro = outPro+5;
+			if(sdata.pitcherlistA.get(cPitcher).getWhip()<1.1) { // whip
+				outPro = outPro+10;
 			}else {
 				outPro = outPro*(float)0.9;
 			}
 			
 		}
+		
+		System.out.println("outPro: "+outPro);
 		
 		return outPro;
 	}
@@ -78,53 +80,54 @@ public class GameAnalyser{
 	
 		// 안타 가능성
 		float hitPro;
-		hitPro = (float)new Random().nextInt(40-30+1)+30;
+		hitPro = (float)new Random().nextInt(55-20+1)+20;
 		if(cTeam) {
 			//A팀 공격 vs B팀 수비
-			if(sdata.batterlistA.get(cBatter).getHitrate()>0.270) {   // 타율
+			if(sdata.batterlistA.get(cBatter).getHitrate()>0.250) {   // 타율
 				hitPro = hitPro+5;
 			}else {
-				hitPro = hitPro*(float)0.7;
+				hitPro = hitPro*(float)0.9;
 			}
 			
-			if(sdata.pitcherlistB.get(cPitcher).getEra()<3.00) {   // 평균자책점 
+			if(sdata.pitcherlistB.get(cPitcher).getEra()<4.00) {   // 평균자책점 
 				hitPro = hitPro*(float)0.7;
 			}
 			
 			if(sdata.batterlistA.get(cBatter).getHit()>100) {  // 안타
-				hitPro = hitPro*(float)1.2;
+				hitPro = hitPro*(float)1.1;
 			}
 			
-			if(sdata.batterlistA.get(cBatter).getOps()>0.850) {  // OPS
-				hitPro = hitPro+5;
+			if(sdata.batterlistA.get(cBatter).getOps()>0.800) {  // OPS
+				hitPro = hitPro+3;
 			}else {
-				hitPro = hitPro*(float)0.8;
+				hitPro = hitPro*(float)0.9;
 			}
 			
 			
 		}else {
 			//B팀 공격 vs A팀 수비
-			if(sdata.batterlistB.get(cBatter).getHitrate()>0.270) {   // 타율
+			if(sdata.batterlistB.get(cBatter).getHitrate()>0.250) {   // 타율
 				hitPro = hitPro+5;
 			}else {
-				hitPro = hitPro*(float)0.7;
+				hitPro = hitPro*(float)0.9;
 			}
 			
-			if(sdata.pitcherlistA.get(cPitcher).getEra()<3.00) {	// 평균자책점 
+			if(sdata.pitcherlistA.get(cPitcher).getEra()<4.00) {	// 평균자책점 
 				hitPro = hitPro*(float)0.7;
 			}
 			
 			if(sdata.batterlistB.get(cBatter).getHit()>100) { // 안타
-				hitPro = hitPro*(float)1.2;
+				hitPro = hitPro*(float)1.1;
 			}
 			
 			if(sdata.batterlistB.get(cBatter).getOps()>0.800) {  // OPS
-				hitPro = hitPro+5;
+				hitPro = hitPro+3;
 			}else {
-				hitPro = hitPro*(float)0.8;
+				hitPro = hitPro*(float)0.9;
 			}
 		
 		}
+		System.out.println("hitPro : "+hitPro);
 		
 		return hitPro;
 	}
@@ -166,6 +169,7 @@ public class GameAnalyser{
 			
 			
 		}
+		System.out.println("fBallPro : "+fBallPro);
 		return fBallPro;
 	}
 	

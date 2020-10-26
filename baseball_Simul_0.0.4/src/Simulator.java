@@ -73,9 +73,9 @@ public class Simulator
 						
 					}
 					playball = true;
-					System.out.print("진행하시려면 <Enter>키를 누르십시오.");
-					BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-					in.readLine();
+//					System.out.print("진행하시려면 <Enter>키를 누르십시오.");
+//					BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+//					in.readLine();
 					progress();
 					
 				}
