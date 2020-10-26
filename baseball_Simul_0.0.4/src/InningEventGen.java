@@ -20,7 +20,9 @@ public class InningEventGen
 		float hitPro = ga.hitPro(currentTeam, currentBorder, currentPorder);
 		float fourPro = ga.fourBallPro(currentTeam, currentBorder, currentPorder);
 		
-		eventPro = (outPro>hitPro)&&(outPro>fourPro)?outPro:(fourPro>hitPro?fourPro:hitPro);
+		eventPro = outPro;
+		if(hitPro > eventPro) eventPro = hitPro;
+		if(fourPro > eventPro) eventPro = fourPro;
 		
 		if(eventPro == outPro) {
 			eventResult = ga.outEvent(currentTeam, currentBorder, currentPorder);

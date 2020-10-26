@@ -8,7 +8,7 @@ public class Pitcher extends PlayerData {
 		
 	}
 	public Pitcher(String team, String position, int order, String name, int number,int win, float era, float whip, int strike, int ball){
-		super(name,team,position,number);
+		super(team,position,name,number);
 		this.order = order;
 		this.win = win;
 		this.era = era;

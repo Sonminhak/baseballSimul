@@ -55,9 +55,7 @@ public class ScoreSave
 		teamName[0] = teamname1;
 		teamName[1] = teamname2;
 	}
-	/*=========== 메소드 ============*/
 
-	/* 점수판 초기화 */
 	public void initScoreBoard()
 	{
 		for ( int i=0;i<10 ;i++ )

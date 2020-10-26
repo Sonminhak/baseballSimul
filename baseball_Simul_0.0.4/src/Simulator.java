@@ -3,26 +3,24 @@ import java.util.Arrays;
 
 public class Simulator 
 {
-	/*=========== 변  수 ============*/
-	/* */
+	
 	private String team1;	// 선공팀
 	private String team2;	// 후공팀
 
 	private ScoreSave scoreBoard;	// 점수판
 	
-	/* 상태를 나타내는 변수 */
+
 	private int inning;		// 이닝
 	private boolean firstTeamAttack;	// 선공팀 공격
 	private int outCount;	// 아웃카운트
 	private int[] baseSituation = new int[] {0,0,0,0}; // 주자 상태 - 0:주자없음, 1:1루, 2:1루2루 ,3:만루
 
-	private int AteamBatterOrder;
+	private int AteamBatterOrder; // 
 	private int BteamBatterOrder;
 	private int AteamPitcherOrder;
 	private int BteamPitcherOrder;
 	
 	
-	/* 	팀1, 팀2 */
 	public Simulator(String teamname1, String teamname2)
 	{
 		this.team1 = teamname1;
@@ -30,10 +28,10 @@ public class Simulator
 		initGame();
 	}
 
-	/*=========== 메소드 ============*/
-	/* 게임 초기화 */
+	
 	public void initGame()
 	{
+		// 게임 초기화
 		scoreBoard = new ScoreSave(team1, team2);
 		/* 상태 변수들 초기화 */
 		outCount = 0;
@@ -45,8 +43,9 @@ public class Simulator
 		firstTeamAttack = true;
 	}
 
-	/* 게임 시작 */
+
 	public void PLAYBALL() throws IOException
+	// 게임 시작
 	{
 
 		System.out.println("경기 시작되었습니다.");
@@ -55,7 +54,7 @@ public class Simulator
 		for ( ;inning<=9;inning++ )
 		{
 			for ( int i=0;i<2;i++ ) {
-				//-- 9회말에 후공팀이 앞선다면 경기종료
+				// 9회말에 후공팀이 앞선다면 경기종료
 				if ( inning==9 && i==1 && scoreBoard.getRun()[0] < scoreBoard.getRun()[1] )
 				{
 					System.out.print("후공팀 결과에 상관 없이 경기 종료");
@@ -64,7 +63,7 @@ public class Simulator
 				viewCurrentState();
 				for ( ;outCount<3; )
 				{
-					//-- 게임진행
+					// 게임진행
 					if ( playball==false ) ;
 					else
 					{
@@ -80,24 +79,24 @@ public class Simulator
 					progress();
 					
 				}
-				if(inning%3==0) {
+				if(inning==3||inning==6) {
 					if(firstTeamAttack) {
 						BteamPitcherOrder++;
 					}else {
 						AteamPitcherOrder++;
 					}
 				}
-				//-- 공수교대 메시지 출력
+				// 공수교대 메시지 출력
 				System.out.println(whatInning() + whoAttack() + "공격이 끝났습니다. 공수교대!");
-				//-- 주자일소
+				// 주자초기화
 				resetRunner();
-				//-- 아웃카운트 초기화
+				// 아웃카운트 초기화
 				outCount = 0;
-				//-- 공수교대
+				// 공수교대
 				firstTeamAttack = !firstTeamAttack;
 			}
 		}
-		//-- 경기 종료!
+		// 경기 종료!
 		System.out.println("경기 종료됩니다.");
 		System.out.print("스코어 " + scoreBoard.getRun()[0] + "대" + scoreBoard.getRun()[1] + "으로 ");
 		
@@ -115,13 +114,10 @@ public class Simulator
 		}
 
 	}
-	/* 게임 진행 */
-	/* 이벤트 발생 함수
-	 - 일단 3가지로 제한한다. 1 - 아웃, 2 - 안타, 3 - 에러
-	 - 후에 이벤트를 나타내는 클래스도 만들어서 관리해야 겠다.
-	*/
+	
 	public void progress()
 	{
+		// 경기 진행
 		int currentPitcher;
 		int currentBatter;
 		
@@ -140,7 +136,6 @@ public class Simulator
 		if ( eventValue==1 )
 		{
 			System.out.println("<뜬 공 아웃>");
-			//-- 아웃카운트 상태 갱신
 			outCount++;
 		}else if ( eventValue==2 )
 		{
@@ -155,44 +150,30 @@ public class Simulator
 		else if ( eventValue==4 )
 		{
 			System.out.println("<볼넷>");
-			//-- 주자 상태 갱신
-			//-- 스코어보드 갱신(안타)
-			scoreBoard.addHit(!firstTeamAttack);
-			//-- 주자가 꽉 찼을때 득점
 			moveRunner(1, !firstTeamAttack);
 		}
 		else if ( eventValue==5 )
 		{
 			System.out.println("<안타>");
-			//-- 주자 상태 갱신
-			//-- 스코어보드 갱신(안타)
 			scoreBoard.addHit(!firstTeamAttack);
-			//-- 주자가 꽉 찼을때 득점
 			moveRunner(1, !firstTeamAttack);
 		}
 		else if ( eventValue==6 )
 		{
 			System.out.println("<2루타>");
-			//-- 주자 상태 갱신
-			//-- 스코어보드 갱신(안타)
 			scoreBoard.addHit(!firstTeamAttack);
 			moveRunner(2, !firstTeamAttack);
-			
-			
+		
 		}
 		else if ( eventValue==7 )
 		{
 			System.out.println("<3루타>");
-			//-- 주자 상태 갱신
-			//-- 스코어보드 갱신(안타)
 			scoreBoard.addHit(!firstTeamAttack);
 			moveRunner(3, !firstTeamAttack);
 		}
 		else if ( eventValue==8 )
 		{
 			System.out.println("<홈런>");
-			//-- 주자 상태 갱신
-			//-- 스코어보드 갱신(안타)
 			scoreBoard.addHit(!firstTeamAttack);
 			moveRunner(4, !firstTeamAttack);
 		}
@@ -204,14 +185,12 @@ public class Simulator
 		}
 		
 		
-		
 		if(firstTeamAttack) {
 			AteamBatterOrder++;
 			if(AteamBatterOrder>=9) {
 				AteamBatterOrder = 0;
 			}
 	
-			
 		}else {
 			BteamBatterOrder++;
 			if(BteamBatterOrder>=9) {
@@ -222,9 +201,11 @@ public class Simulator
 	
 	}
 	
-	/* 0 - 1루, 1 - 2루 , 2 - 3루 */ 
+	
 	public void moveRunner(int plusNum, boolean checkTeam)
 	{	
+		
+		// 주자 루 이동
 		if(plusNum==1)
 		{
 			for(int i=2;i>=0;i--)
@@ -337,20 +318,18 @@ public class Simulator
 		
 	}
 
-	/* 현재 스코어보드 보기 */
+	
 	public void viewCurrentScoreBoard()
 	{
-		//-- 스코어보드 뷰 생성
+		// 스코어 보드
 		ScoreBoardView sbv = new ScoreBoardView();
-
-		//-- 스코어보드 출력
 		sbv.display(scoreBoard);
 	}
 
-	/* 현재 상황 보기 */
+
 	public void viewCurrentState()
 	{
-		//-- 현재상황 출력
+		// 현재상황 출력
 		String curr = new String();
 		curr = "<" + whatInning();
 		if ( firstTeamAttack==true )
@@ -359,9 +338,10 @@ public class Simulator
 		System.out.println(curr);
 	}
 
-	/* 지금이 몇회/말 인지 문자열로 변경하는 함수 */
+	
 	public String whatInning()
 	{
+		// 이닝 확인
 		String curr = new String();
 		curr = inning + "회";
 		if ( firstTeamAttack==true )
@@ -370,9 +350,10 @@ public class Simulator
 		return curr;
 	}
 
-	/* 지금이 누구 공격인지 문자열로 알아보는 함수 */
+	
 	public String whoAttack()
 	{
+		// 공격팀 확인
 		if ( firstTeamAttack==true )
 		{
 			return team1;
@@ -382,6 +363,7 @@ public class Simulator
 
 	public void currentScore()
 	{
+		// 현재 점수
 		System.out.println(whatInning() + whoAttack() + " 득점에 성공합니다!" +
 				"현재 스코어는 " + scoreBoard.getRun()[0] + "대" + scoreBoard.getRun()[1] +
 				" 입니다!");	

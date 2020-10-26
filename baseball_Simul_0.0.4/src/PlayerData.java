@@ -41,7 +41,7 @@ public class PlayerData{
 		
 	}
 	
-	public PlayerData(String team, String name, String position, int number) {
+	public PlayerData(String team, String position,String name,int number) {
 		super();
 		this.team = team;
 		this.name = name;

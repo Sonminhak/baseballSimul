@@ -5,15 +5,15 @@ public class BaseBallSimul
 	public static void main(String [] args)
 	{
 		StatData gets = new StatData();
-		gets.getStat();
+		gets.getStat(); // StatData 실행
 		BaseBallSimul app = new BaseBallSimul();
-		app.gameManTest();
+		app.gameManTest(); // BaseBallSimul 실행
 	}
 	
 	public void gameManTest()
 	{
 		Simulator gm = new Simulator("롯데","SK");
-		gm.viewCurrentScoreBoard();
+		gm.viewCurrentScoreBoard(); // 스코어보드 확인을 위해 viewCurrentScoreBoard 실행
 		try
 		{
 			gm.PLAYBALL();
@@ -22,7 +22,7 @@ public class BaseBallSimul
 		{
 			System.out.println(e);
 		}
-		gm.viewCurrentScoreBoard();
+		gm.viewCurrentScoreBoard(); // 스코어보드 확인을 위해 viewCurrentScoreBoard 실행
 	}
 
 }
